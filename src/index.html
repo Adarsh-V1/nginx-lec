@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexCloud - Next Gen Cloud Platform</title>
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --dark: #0f172a;
+      --gray-light: #f8fafc;
+      --text: #334155;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background-color: #ffffff;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header / Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--dark);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+    }
+
+    .btn-secondary {
+      background-color: #f1f5f9;
+      color: var(--dark);
+      margin-left: 12px;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e2e8f0;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      font-size: 0.825rem;
+      font-weight: 600;
+      color: var(--primary);
+      background-color: #eef2ff;
+      border-radius: 9999px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #4f46e5, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 32px;
+    }
+
+    .hero-image-wrapper {
+      margin-top: 48px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 90px 0;
+      background-color: var(--gray-light);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      color: var(--dark);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      padding: 32px 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-icon {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 80px 0;
+      text-align: center;
+      background: linear-gradient(135deg, #1e1b4b, #312e81);
+      color: #ffffff;
+    }
+
+    .cta h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .cta p {
+      color: #cbd5e1;
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    .cta .btn-primary {
+      background-color: #ffffff;
+      color: var(--dark);
+      font-weight: 700;
+    }
+
+    .cta .btn-primary:hover {
+      background-color: #f8fafc;
+      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.25);
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">⚡ Apex<span>Cloud</span></a>
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact" class="btn btn-primary">Get Started</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <span class="badge">🚀 Version 2.0 Live Now</span>
+      <h1>Build & Deploy Applications <span>Faster Than Ever</span></h1>
+      <p>Modern hosting and microservice orchestration with unmatched speed, ironclad security, and intuitive analytics.</p>
+      <div>
+        <a href="#get-started" class="btn btn-primary">Start Free Trial</a>
+        <a href="#features" class="btn btn-secondary">Explore Features</a>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="hero-image-wrapper">
+        <img src="assets/hero.svg" alt="ApexCloud Dashboard Preview" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Engineered for Modern Web</h2>
+        <p>Everything you need to deliver high-performance applications globally.</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <img src="assets/feature-speed.svg" alt="Lightning Fast Performance" class="feature-icon">
+          <h3>Ultra-Fast Speed</h3>
+          <p>Global edge caching and optimized route handlers ensure sub-millisecond latency worldwide.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <img src="assets/feature-security.svg" alt="Ironclad Security" class="feature-icon">
+          <h3>Ironclad Security</h3>
+          <p>Built-in DDoS mitigation, automated TLS certificates, and real-time vulnerability scanning.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <img src="assets/feature-cloud.svg" alt="Cloud Native Infrastructure" class="feature-icon">
+          <h3>Cloud Native</h3>
+          <p>Effortless continuous deployment with Git push integration and zero-downtime rollouts.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <img src="assets/feature-analytics.svg" alt="Deep Analytics" class="feature-icon">
+          <h3>Real-time Metrics</h3>
+          <p>Comprehensive observability with distributed tracing, latency heatmaps, and log telemetry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta" id="get-started">
+    <div class="container">
+      <h2>Ready to Supercharge Your Stack?</h2>
+      <p>Join thousands of developers shipping faster, safer, and cleaner code today.</p>
+      <a href="#" class="btn btn-primary">Create Your Account</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 ApexCloud Technologies Inc. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

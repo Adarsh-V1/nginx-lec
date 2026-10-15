@@ -1,0 +1,22 @@
+version: '3'
+services: 
+  fool:
+    build: .
+    environment:
+      - APP_NAME=fool
+    ports:
+      - "3002:3001"
+  
+  error:
+    build: .
+    environment:
+      - APP_NAME=error
+    ports:
+      - "3003:3001"
+  
+  door:
+    build: .
+    environment:
+      - APP_NAME=door
+    ports:
+      - "3004:3001"
